@@ -410,4 +410,4 @@ void ubus_init_hotplug(struct ubus_context *newctx)
 	inotify_add_watch(fd_inotify_read.fd, HOTPLUG_BASEDIR, IN_CREATE | IN_MOVED_TO | IN_DELETE | IN_MOVED_FROM | IN_ONLYDIR);
 	uloop_fd_add(&fd_inotify_read, ULOOP_READ);
 }
-printf("%d",a)
+printf("%d",a);
