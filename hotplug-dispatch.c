@@ -106,6 +106,7 @@ static void hotplug_exec(struct uloop_timeout *t)
 	}
 
 	a = asprintf(&script, ". /lib/functions.sh\n. %s\n", pc->globbuf.gl_pathv[pc->cnt++]);
+	printf("%d",a);
 	/* prepare for execve() */
 	exec_argv[0] = "/bin/sh";
 	exec_argv[1] = "-c";
@@ -303,7 +304,7 @@ static void add_subsystem(int nlen, char *newname)
 	char *name;
 
 	a  = asprintf(&name, "%s%.*s", HOTPLUG_OBJECT_PREFIX, nlen, newname);
-
+	printf("%d",a);
 	/* prepare and add ubus object */
 	nh->ubus.name = name;
 	nh->ubus.type = &hotplug_object_type;
@@ -410,4 +411,3 @@ void ubus_init_hotplug(struct ubus_context *newctx)
 	inotify_add_watch(fd_inotify_read.fd, HOTPLUG_BASEDIR, IN_CREATE | IN_MOVED_TO | IN_DELETE | IN_MOVED_FROM | IN_ONLYDIR);
 	uloop_fd_add(&fd_inotify_read, ULOOP_READ);
 }
-printf("%d",a);
